@@ -2,4 +2,29 @@
 
 {% block content %}
     <h1>index</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Foco</th>
+                    <th scope="col">Integrantes</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">X-team</th>
+                    <td>front-end</td>
+                    <td>5/10</td>
+                    <td>time de desenvolvedores frontend</td>
+                    <td>
+                        <button class="btn btn-success" disabled>Participar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
