@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Seu time: </h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="name">Nome do time</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="foco">Foco</label>
+                    <input type="text" class="form-control" name="foco">
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade de participantes</label>
+                    <input type="number" class="form-control" name="quantidade" min="1" max="20">
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descricao</label>
+                    <textarea class="form-control" name="descricao" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar time</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}
