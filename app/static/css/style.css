@@ -1,0 +1,17 @@
+.main {
+    min-height: calc(100vh - 110px);
+}
+.card {
+    margin-top: 40px;
+}
+
+
+/* login */
+.card-login {
+    width: 800px;
+    padding: 40px;
+}
+.btn-login {
+    width: 400px;
+    margin-top: 40px;
+}

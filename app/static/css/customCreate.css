@@ -1,0 +1,13 @@
+input {
+    width: 600px;
+}
+span {
+    font-size: 10px;
+}
+p {
+    font-size: 10px;
+}
+input, label {
+    font-size: 18px;
+    display: block;
+}
