@@ -1,4 +1,32 @@
-<!--
-    edicao do time
-    cadastrar participantes
--->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Team Manager</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <input type="text" name="owner" value="{{ user.pk }}" hidden>
+    <div class="form-group">
+        <label for="name">Team name</label>
+        <input type="text" class="form-control" name="name">
+    </div>
+    <div class="form-group">
+        <label for="focus">Focus</label>
+        <input type="text" class="form-control" name="focus">
+    </div>
+    <div class="form-group">
+        <label for="max">Max participants</label>
+        <input type="number" class="form-control" name="max" min="1" max="20">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" rows="5" maxlength="200"></textarea>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="private" value="1">
+        <label class="form-check-label" for="private">private</label>
+    </div>
+    <button type="submit" class="btn btn-success">Edit</button>
+</form>
+
+{% endblock %}

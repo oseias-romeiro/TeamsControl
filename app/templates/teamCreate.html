@@ -2,27 +2,32 @@
 
 {% block content %}
 
-    <h1>Seu time: </h1>
+    <h1>My Team</h1>
     <div class="card">
         <div class="card-body">
             <form action="" method="post">{% csrf_token %}
+                <input type="text" name="owner" value="{{ user.pk }}" hidden>
                 <div class="form-group">
-                    <label for="name">Nome do time</label>
+                    <label for="name">Team name</label>
                     <input type="text" class="form-control" name="name">
                 </div>
                 <div class="form-group">
-                    <label for="foco">Foco</label>
-                    <input type="text" class="form-control" name="foco">
+                    <label for="focus">Focus</label>
+                    <input type="text" class="form-control" name="focus">
                 </div>
                 <div class="form-group">
-                    <label for="quantidade">Quantidade de participantes</label>
-                    <input type="number" class="form-control" name="quantidade" min="1" max="20">
+                    <label for="max">Max participants</label>
+                    <input type="number" class="form-control" name="max" min="1" max="20">
                 </div>
                 <div class="form-group">
-                    <label for="descricao">Descricao</label>
-                    <textarea class="form-control" name="descricao" rows="5"></textarea>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" rows="5" maxlength="200"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Criar time</button>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="private" value="1">
+                    <label class="form-check-label" for="private">private</label>
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
     </div>

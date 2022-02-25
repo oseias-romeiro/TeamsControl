@@ -3,27 +3,33 @@
 {% block content %}
     <h1>index</h1>
 
+    {% if not user.is_anonymous %}
+        <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
+    {% endif %}
+
     <div class="table-responsive">
         <table class="table">
             <thead class="bg-dark text-light">
                 <tr>
-                    <th scope="col">Time</th>
-                    <th scope="col">Foco</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Focus</th>
                     <th scope="col">Nº</th>
-                    <th scope="col">Descricao</th>
-                    <th scope="col">Ação</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody>
+                {% for team in object_list %}
                 <tr>
-                    <th scope="row">X-team</th>
-                    <td>front-end</td>
-                    <td>5/10</td>
-                    <td>time de desenvolvedores frontend</td>
+                    <th scope="row">{{ team.name }}</th>
+                    <td>{{ team.focus }}</td>
+                    <td>{{ team.max }}</td>
+                    <td>{{ team.description }}</td>
                     <td>
-                        <button class="btn btn-success" disabled>entrar</button>
+                        <button class="btn btn-success" disabled>Join</button>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

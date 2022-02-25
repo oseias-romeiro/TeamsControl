@@ -25,9 +25,12 @@
             {% endfor %}
         {% endif %}
         <div class="container">
+            <br>
+            <button class="btn btn-success" href="{% url 'team' %}">My Team</button>
+            <br>
             <div class="d-flex justify-content-center">
                 <div class="card card-login">
-                    <h1 style="text-align: center;">Cadastro</h1>
+                    <h2 style="text-align: center;">Edit profile</h2>
                     <form method="post">{% csrf_token %}
                         <label for="email">E-mail</label>
                         <input type="email" value="{{ user.email }}" disabled>

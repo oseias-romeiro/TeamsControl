@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
@@ -43,3 +44,18 @@ class CustomUser(AbstractUser):
         return self.email
     
     objects = CustomUserManager()
+
+class Team(models.Model):
+    owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    name = models.CharField('Name', max_length=20)
+    focus = models.CharField('Focus', max_length=50)
+    max = models.PositiveIntegerField('Max participants', default=1,
+        validators=[
+            MaxValueValidator(20),
+            MinValueValidator(1)
+        ])
+    description = models.CharField('Description', max_length=200)
+    private = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.owner
