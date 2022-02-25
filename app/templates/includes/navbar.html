@@ -10,15 +10,21 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
             </li>
+            {% if user.is_anonymous %}
             <li class="nav-item">
                 <a class="nav-link" href="/contas/login">Login</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Cadastrar</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/signup/">Cadastrar</a>
+                <a class="nav-link" href="/profile/{{ user.pk }}">Profile</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
