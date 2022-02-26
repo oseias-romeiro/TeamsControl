@@ -30,7 +30,7 @@ class EditProfile(LoginRequiredMixin, UpdateView):
 class TeamCreate(LoginRequiredMixin, CreateView):
     template_name = 'teamCreate.html'
     success_url = reverse_lazy('index')
-    fields = ['owner', 'name', 'focus', 'description', 'private']
+    fields = ['owner', 'participants', 'name', 'focus', 'description', 'private']
     model = Team
 
 class TeamView(LoginRequiredMixin, UpdateView):
@@ -43,4 +43,10 @@ class DeleteTeam(LoginRequiredMixin, DeleteView):
     model = Team
     template_name = 'team_delete.html'
     success_url = reverse_lazy('index')
+
+class JoinTeam(LoginRequiredMixin, UpdateView):
+    template_name = 'joinTeam.html'
+    success_url = reverse_lazy('index')
+    fields = ['participants']
+    model = Team
     

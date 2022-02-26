@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam;
+from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam, JoinTeam;
 
 urlpatterns = [
     path('', IndexView.as_view(), name = 'index'),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('profile/<int:pk>/', EditProfile.as_view()),
     path('team/<int:pk>/', TeamView.as_view()),
     path('deleteTeam/<int:pk>/', DeleteTeam.as_view()),
+    path('joinTeam/<int:pk>/', JoinTeam.as_view()),
 ]
 
 # error routes handler

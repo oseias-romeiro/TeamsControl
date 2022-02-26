@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>index</h1>
+    <h1>Teams</h1>
 
-    {% if not user.is_anonymous %}
+    {% if not user.is_anonymous and not user.team.owner %}
         <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
     {% endif %}
 
@@ -23,10 +23,15 @@
                 <tr>
                     <th scope="row">{{ team.name }}</th>
                     <td>{{ team.focus }}</td>
-                    <td>{{ team.participants.count }}/{{ team.max }}</td>
+                    <td>{{ team.participants.count }}</td>
                     <td>{{ team.description }}</td>
                     <td>
-                        <button class="btn btn-success" disabled>Join</button>
+                        {% if user.is_anonymous %}
+                            <button class="btn btn-success" disabled>Join</button>
+                        {% else %}
+                            <a href="/joinTeam/{{ team.pk }}/"><button class="btn btn-success">Join</button></a>
+                        {% endif %}
+                        
                     </td>
                 </tr>
                 {% endfor %}

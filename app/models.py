@@ -48,7 +48,7 @@ class CustomUser(AbstractUser):
 
 class Team(models.Model):
     owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, default=CustomUser)
-    participants = models.ManyToManyField(CustomUser, default=CustomUser, related_name='+')
+    participants = models.ManyToManyField(CustomUser, default=CustomUser, related_name='participa')
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
     description = models.CharField('Description', max_length=200)
@@ -58,8 +58,4 @@ class Team(models.Model):
         return self.owner
 
 class Membership(models.Model):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    invites = models.ManyToManyField(CustomUser, related_name='+')
-
-    def __str__(self) -> str:
-        return self.pk
+    a = models.CharField(max_length=10, default="")
