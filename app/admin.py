@@ -20,5 +20,5 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('owner', 'name', 'focus', 'max', 'description', 'private')
+    list_display = ('owner', 'name', 'focus', 'description', 'private')
 

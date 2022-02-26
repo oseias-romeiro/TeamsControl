@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from app.forms import CustomUserCreate
-from .models import CustomUser, Team
+from .models import CustomUser, Team, Membership
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -30,13 +30,13 @@ class EditProfile(LoginRequiredMixin, UpdateView):
 class TeamCreate(LoginRequiredMixin, CreateView):
     template_name = 'teamCreate.html'
     success_url = reverse_lazy('index')
-    fields = ['owner', 'participants', 'name', 'focus', 'max', 'description', 'private']
+    fields = ['owner', 'name', 'focus', 'description', 'private']
     model = Team
 
 class TeamView(LoginRequiredMixin, UpdateView):
     template_name = 'team.html'
     success_url = reverse_lazy('index')
-    fields = ['owner', 'participants', 'name', 'focus', 'max', 'description', 'private']
+    fields = ['owner', 'participants', 'name', 'focus', 'description', 'private']
     model = Team
 
 class DeleteTeam(LoginRequiredMixin, DeleteView):

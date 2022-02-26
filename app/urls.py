@@ -4,8 +4,8 @@ from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexV
 
 urlpatterns = [
     path('', IndexView.as_view(), name = 'index'),
-    path('signup/', CreateUserView.as_view(), name = 'signup'),
-    path('teamCreate/', TeamCreate.as_view(), name = 'teamCreate'),
+    path('signup/', CreateUserView.as_view(), name='signup'),
+    path('teamCreate/', TeamCreate.as_view(), name='teamCreate'),
     path('profile/<int:pk>/', EditProfile.as_view()),
     path('team/<int:pk>/', TeamView.as_view()),
     path('deleteTeam/<int:pk>/', DeleteTeam.as_view()),

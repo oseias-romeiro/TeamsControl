@@ -47,30 +47,19 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
 class Team(models.Model):
-    owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True,)
-    participants = models.ManyToManyField(CustomUser, related_name='+',
-        through='Membership',
-        through_fields=('team', 'user'),
-        default=owner,
-    )
+    owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, default=CustomUser)
+    participants = models.ManyToManyField(CustomUser, default=CustomUser, related_name='+')
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
-    max = models.PositiveIntegerField('Max participants', default=1,
-        validators=[
-            MaxValueValidator(20),
-            MinValueValidator(1)
-        ])
     description = models.CharField('Description', max_length=200)
     private = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.owner
-    
-    def clean(self, *args, **kwargs):
-        if self.participants.count() > self.max:
-            raise ValidationError(f"You can't assign more than {self.max} participants")
-        super(Team, self).clean(*args, **kwargs)
 
 class Membership(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    invites = models.ManyToManyField(CustomUser, related_name='+')
+
+    def __str__(self) -> str:
+        return self.pk
