@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
 
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
@@ -47,6 +48,7 @@ class CustomUser(AbstractUser):
 
 class Team(models.Model):
     owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True,)
+    participants = models.ManyToManyField(CustomUser, related_name='+')
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
     max = models.PositiveIntegerField('Max participants', default=1,
@@ -59,3 +61,8 @@ class Team(models.Model):
 
     def __str__(self) -> str:
         return self.owner
+    
+    def clean(self, *args, **kwargs):
+        if self.participants.count() > self.max:
+            raise ValidationError(f"You can't assign more than {self.max} participants")
+        super(Team, self).clean(*args, **kwargs)
