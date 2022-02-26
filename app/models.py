@@ -46,7 +46,7 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
 class Team(models.Model):
-    owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True,)
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
     max = models.PositiveIntegerField('Max participants', default=1,
