@@ -48,7 +48,11 @@ class CustomUser(AbstractUser):
 
 class Team(models.Model):
     owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True,)
-    participants = models.ManyToManyField(CustomUser, related_name='+')
+    participants = models.ManyToManyField(CustomUser, related_name='+',
+        through='Membership',
+        through_fields=('team', 'user'),
+        default=owner,
+    )
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
     max = models.PositiveIntegerField('Max participants', default=1,
@@ -66,3 +70,7 @@ class Team(models.Model):
         if self.participants.count() > self.max:
             raise ValidationError(f"You can't assign more than {self.max} participants")
         super(Team, self).clean(*args, **kwargs)
+
+class Membership(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

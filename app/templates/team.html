@@ -9,11 +9,6 @@
 
         <form action="" method="post">{% csrf_token %}
             {{ form.as_p }}
-            <div class="form-group">
-                <label for="participants">E-mail</label>
-                <input type="email" class="form-control" name="participants" placeholder="name@example.com">
-                <small>separate with commas</small>
-            </div>
             <br>
             <button type="submit" class="btn btn-success">Edit</button>
         </form>
@@ -25,6 +20,10 @@
             pointer-events: none;
             width: 600px;
             height: 30px;
+            font-size: 1.1rem;
+        }
+        #id_participants {
+            width: 600px;
             font-size: 1.1rem;
         }
         #id_private {

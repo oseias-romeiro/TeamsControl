@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import CustomUser, Team
+from .models import CustomUser, Team, Membership
 from .forms import CustomUserCreate, CustomUserChange
 
 @admin.register(CustomUser)
@@ -21,3 +21,4 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('owner', 'name', 'focus', 'max', 'description', 'private')
+
