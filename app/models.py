@@ -49,6 +49,7 @@ class CustomUser(AbstractUser):
 class Team(models.Model):
     owner = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, default=CustomUser)
     participants = models.ManyToManyField(CustomUser, default=CustomUser, related_name='participa')
+    invites = models.ManyToManyField(CustomUser, related_name='invited')
     name = models.CharField('Name', max_length=20)
     focus = models.CharField('Focus', max_length=50)
     description = models.CharField('Description', max_length=200)

@@ -18,9 +18,14 @@
                 {% for p in team.participants.all %}
                     <option value="{{ p.pk }}" selected>{{ p.email }}</option>
                 {% endfor %}
+                {% for i in team.invites.all %}
+                    <option value="{{ i.pk }}">{{ i.email }}</option>
+                {% endfor %}
             </select>
-            <small>Let selected only if you want keep in your team!</small>
-            <br><br>
+            <ul>
+                <li><small>Based on invites</small></li>
+                <li><small>Let selected only if you want keep in your team!</small></li>
+            </ul>
             <div class="form-group">
                 <label for="focus">Focus</label>
                 <input type="text" class="form-control" name="focus" value="{{ team.focus }}">
@@ -34,6 +39,7 @@
                 {% if team.private %} selected {% endif %}
                 >
                 <label class="form-check-label" for="private">private</label>
+                <small>if private your Team dont appear to people and that dont recieve invites to join it. So thats <a href="http://localhost/joinTeam/{{ user.pk }}/">link</a> is for other perssons join in your Team</small>
             </div>
             <button type="submit" class="btn btn-success">Edit</button>
         </form>

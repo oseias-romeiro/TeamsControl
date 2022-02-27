@@ -29,6 +29,11 @@
                     <a class="nav-link" href="/team/{{ user.pk }}/">My Team</a>
                 </li>
             {% endif %}
+            {% if user.participa %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/teams/{{ user.pk }}/">Teams</a>
+                </li>
+            {% endif %}
             {% endif %}
         </ul>
     </div>

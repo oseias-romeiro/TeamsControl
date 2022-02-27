@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Public Teams</h1>
-
-    {% if not user.is_anonymous and not user.team.owner %}
-        <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
-    {% endif %}
+    <h1>Teams</h1>
 
     <div class="table-responsive">
         <table class="table">
@@ -26,12 +22,8 @@
                     <td>{{ team.participants.count }}</td>
                     <td>{{ team.description }}</td>
                     <td>
-                        {% if user.is_anonymous %}
-                            <button class="btn btn-success" disabled>Join</button>
-                        {% else %}
-                            <a href="/joinTeam/{{ team.pk }}/"><button class="btn btn-success">Join</button></a>
-                        {% endif %}
-                        
+                        <a href="/teamExit/{{ team.pk }}/"><button class="btn btn-danger">Exit</button></a>
+                        <a href="/work/{{ team.pk }}/"><button class="btn btn-primary">Enter</button></a>
                     </td>
                 </tr>
                 {% endfor %}
