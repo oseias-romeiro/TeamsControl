@@ -1,9 +1,10 @@
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 
 from app.forms import CustomUserCreate
-from .models import CustomUser, Team
+from .models import CustomUser, Team, Goal
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -72,6 +73,42 @@ class ExitTeam(LoginRequiredMixin, UpdateView):
     fields = ['participants']
     model = Team
 
-class Work(TemplateView):
+class Work(LoginRequiredMixin, ListView):
     template_name = 'work/index.html'
+    model = Goal
+
+    """
+    def get_queryset(self):
+        teamCliente = self.request.GET.get('pk')
+        return super().get_queryset().exclude(team=teamCliente)
+    """
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['team'] = Team.objects.filter(owner_id=self.request.user)[0]
+        return context
+
+    def post(self, *args, **kwargs):
+
+        data = self.request.POST
+
+        team = Team.objects.filter(owner_id=data.get('team'))[0]
+
+        goal = Goal()
+        goal.team = team
+        goal.title = data.get('title')
+        goal.goal = data.get('goal')
+        goal.save()
+
+        return redirect('/work/'+data.get('team'))
+
+class DeleteGoals(LoginRequiredMixin, DeleteView):
+    model = Goal
+    template_name = 'work/goal_delete.html'
+    
+    def get_success_url(self, **kwargs):
+        goal = Goal.objects.filter(pk=self.request.POST.get('team'))[0]
+        if  kwargs != None:
+            return '/work/'+ goal.team_id +'/' # nao tem time: str(self.request.user.id)
+        else:
+            return reverse_lazy('index')

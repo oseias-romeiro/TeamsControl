@@ -60,3 +60,18 @@ class Team(models.Model):
 
 class Membership(models.Model):
     a = models.CharField(max_length=10, default="")
+
+class Goal(models.Model):
+    team = models.ManyToManyField(Team, related_name='gooals')
+    title = models.CharField('Title', max_length=20, null=False)
+    goal = models.CharField('Description', max_length=200, null=False)
+
+    def __str__(self) -> str:
+        return self.team
+
+class Goals(models.Model):
+    team = models.OneToOneField(Team, on_delete=models.CASCADE, primary_key=True)
+    goals = models.ForeignKey(Goal, on_delete=models.CASCADE, related_name='go')
+
+    def __str__(self) -> str:
+        return self.team

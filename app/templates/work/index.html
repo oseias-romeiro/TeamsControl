@@ -1,0 +1,49 @@
+{% extends 'work/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body" style="min-height: 300px;">
+                <h1>Goals</h1>
+
+                <div class="row">
+                {% for goal in object_list %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ goal.title }}</h5>
+                            {{ goal.goal }}
+                            {{ goal.team }}
+                            <br>
+                            <a href="/work/delete/{{ goal.pk }}/{{ team.pk }}/"><button class="btn btn-danger">X</button></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>{{ team.name }}</h2>
+                <form action="" method="post">{% csrf_token %}
+                    <input type="text" name="team" value="{{ team.pk }}" hidden>
+                    <div class="form-group">
+                        <label for="title">Goal Title</label>
+                        <input type="text" class="form-control" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="goal">Description</label>
+                        <input type="text" class="form-control" name="goal">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
