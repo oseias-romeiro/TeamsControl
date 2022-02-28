@@ -62,12 +62,12 @@ class Membership(models.Model):
     a = models.CharField(max_length=10, default="")
 
 class Goal(models.Model):
-    team = models.ManyToManyField(Team, related_name='gooals')
+    team = models.IntegerField('team', null=False, default="1")
     title = models.CharField('Title', max_length=20, null=False)
     goal = models.CharField('Description', max_length=200, null=False)
 
     def __str__(self) -> str:
-        return self.team
+        return self.pk
 
 class Goals(models.Model):
     team = models.OneToOneField(Team, on_delete=models.CASCADE, primary_key=True)

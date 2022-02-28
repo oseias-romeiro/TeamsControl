@@ -8,15 +8,15 @@
                 <h1>Goals</h1>
 
                 <div class="row">
-                {% for goal in object_list %}
+                {% for g in object_list %}
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ goal.title }}</h5>
-                            {{ goal.goal }}
-                            {{ goal.team }}
+                            <h5 class="card-title">{{ g.title }}</h5>
+                            {{ g.goal }}
+                            {{ g.owner }}
                             <br>
-                            <a href="/work/delete/{{ goal.pk }}/{{ team.pk }}/"><button class="btn btn-danger">X</button></a>
+                            <a href="/work/delete/{{ g.pk }}/{{ team.pk }}/"><button class="btn btn-danger">X</button></a>
                         </div>
                     </div>
                 </div>
@@ -29,8 +29,8 @@
         <div class="card">
             <div class="card-body">
                 <h2>{{ team.name }}</h2>
-                <form action="" method="post">{% csrf_token %}
-                    <input type="text" name="team" value="{{ team.pk }}" hidden>
+                <form action="" method="post" autocomplete="off">{% csrf_token %}
+                    <input type="number" name="team" value="{{ team.pk }}" hidden>
                     <div class="form-group">
                         <label for="title">Goal Title</label>
                         <input type="text" class="form-control" name="title">

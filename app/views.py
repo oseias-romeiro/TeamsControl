@@ -1,7 +1,7 @@
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from app.forms import CustomUserCreate
 from .models import CustomUser, Team, Goal
@@ -77,38 +77,32 @@ class Work(LoginRequiredMixin, ListView):
     template_name = 'work/index.html'
     model = Goal
 
-    """
-    def get_queryset(self):
-        teamCliente = self.request.GET.get('pk')
-        return super().get_queryset().exclude(team=teamCliente)
-    """
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['team'] = Team.objects.filter(owner_id=self.request.user)[0]
-        return context
-
-    def post(self, *args, **kwargs):
-
-        data = self.request.POST
-
-        team = Team.objects.filter(owner_id=data.get('team'))[0]
+    def post(self, request, *args, **kwargs):
+        team = self.request.POST.get('team')
+        title = self.request.POST.get('title')
+        text = self.request.POST.get('goal')
 
         goal = Goal()
         goal.team = team
-        goal.title = data.get('title')
-        goal.goal = data.get('goal')
+        goal.title = title
+        goal.goal = text
         goal.save()
+        return redirect("/work/"+str(kwargs['pk']))
+    
+    def get_queryset(self, **kwargs):
+        team = self.kwargs['pk']
+        return super().get_queryset().filter(team=team)
 
-        return redirect('/work/'+data.get('team'))
+    def get_context_data(self, **kwargs):
+        team = self.kwargs['pk']
+        context = super().get_context_data(**kwargs)
+        context['team'] = Team.objects.filter(pk=team)[0]
+        return context
 
 class DeleteGoals(LoginRequiredMixin, DeleteView):
     model = Goal
     template_name = 'work/goal_delete.html'
-    
-    def get_success_url(self, **kwargs):
-        goal = Goal.objects.filter(pk=self.request.POST.get('team'))[0]
-        if  kwargs != None:
-            return '/work/'+ goal.team_id +'/' # nao tem time: str(self.request.user.id)
-        else:
-            return reverse_lazy('index')
+
+    def post(self, request, *args, **kwargs):
+        Goal.objects.filter(pk=kwargs['pk']).delete()
+        return redirect("/work/"+str(kwargs['team']))
