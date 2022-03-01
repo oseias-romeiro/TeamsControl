@@ -19,7 +19,7 @@
     <div class="main">
         {% if messages %}
             {% for m in messages %}
-                <div class="alert alert-primary {{ m.tags }}" role="alert">m</div>
+                <div class="alert alert-primary {{ m.tags }}" role="alert">{{ m }}</div>
             {% endfor %}
         {% endif %}
         <div class="container d-flex justify-content-center">

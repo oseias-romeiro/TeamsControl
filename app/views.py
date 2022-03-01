@@ -24,8 +24,11 @@ class IndexView(ListView):
 
 class CreateUserView(CreateView):
     template_name = 'signup.html'
-    success_url = reverse_lazy('login')
     form_class = CustomUserCreate
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Profile created :D')
+        return reverse_lazy('login')
 
 class EditProfile(LoginRequiredMixin, UpdateView):
     template_name = 'profile.html'
@@ -33,31 +36,43 @@ class EditProfile(LoginRequiredMixin, UpdateView):
     model = CustomUser
 
     def get_success_url(self):
-        messages.add_message(self.request, messages.SUCCESS, 'Profile successly edited')
-        return f"/profile/{self.request.user.pk}/"
+        messages.add_message(self.request, messages.SUCCESS, 'Profile edited')
+        return reverse_lazy('index')
 
 class TeamCreate(LoginRequiredMixin, CreateView):
     template_name = 'team/teamCreate.html'
-    success_url = reverse_lazy('index')
     fields = ['owner', 'participants', 'name', 'focus', 'description', 'private']
     model = Team
 
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Team created :D')
+        return reverse_lazy('index')
+
 class TeamView(LoginRequiredMixin, UpdateView):
     template_name = 'team/team.html'
-    success_url = reverse_lazy('index')
     fields = ['owner', 'participants', 'name', 'focus', 'description', 'private']
     model = Team
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Team edited')
+        return reverse_lazy('index')
 
 class DeleteTeam(LoginRequiredMixin, DeleteView):
     model = Team
     template_name = 'team/team_delete.html'
-    success_url = reverse_lazy('index')
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Team deleted!')
+        return reverse_lazy('index')
 
 class JoinTeam(LoginRequiredMixin, UpdateView):
     template_name = 'team/joinTeam.html'
-    success_url = reverse_lazy('index')
     fields = ['invites']
     model = Team
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Invite sended!')
+        return reverse_lazy('index')
 
 class Teams(LoginRequiredMixin, ListView):
     template_name = 'team/teams.html'
@@ -73,9 +88,12 @@ class Teams(LoginRequiredMixin, ListView):
 
 class ExitTeam(LoginRequiredMixin, UpdateView):
     template_name = 'team/exitTeam.html'
-    success_url = reverse_lazy('index')
     fields = ['participants']
     model = Team
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Successful get out team!')
+        return reverse_lazy('index')
 
 class Work(LoginRequiredMixin, ListView):
     template_name = 'work/index.html'
@@ -91,6 +109,7 @@ class Work(LoginRequiredMixin, ListView):
         goal.title = title
         goal.goal = text
         goal.save()
+
         return redirect("/work/"+str(kwargs['pk']))
     
     def get_queryset(self, **kwargs):

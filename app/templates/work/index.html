@@ -13,10 +13,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{ g.title }}</h5>
-                            {{ g.goal }}
-                            {{ g.owner }}
-                            <br>
-                            <a href="/work/delete/{{ g.pk }}/{{ team.pk }}/"><button class="btn btn-danger">X</button></a>
+                            <hr>
+                            <div class="row">
+                                <div class="col-9">{{ g.goal }}</div>
+                                <div class="col-3">
+                                    <a href="/work/delete/{{ g.pk }}/{{ team.pk }}/"><button class="btn btn-success">X</button></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
