@@ -1,7 +1,8 @@
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.contrib import messages
 
 from app.forms import CustomUserCreate
 from .models import CustomUser, Team, Goal
@@ -28,9 +29,12 @@ class CreateUserView(CreateView):
 
 class EditProfile(LoginRequiredMixin, UpdateView):
     template_name = 'profile.html'
-    success_url = reverse_lazy('profile')
     fields = ['nome_completo', 'interesse', 'linkedin']
     model = CustomUser
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Profile successly edited')
+        return f"/profile/{self.request.user.pk}/"
 
 class TeamCreate(LoginRequiredMixin, CreateView):
     template_name = 'team/teamCreate.html'

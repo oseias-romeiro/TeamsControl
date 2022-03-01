@@ -22,8 +22,8 @@
                     <td>{{ team.participants.count }}</td>
                     <td>{{ team.description }}</td>
                     <td>
-                        <a href="/teamExit/{{ team.pk }}/"><button class="btn btn-danger">Exit</button></a>
-                        <a href="/work/{{ team.pk }}/"><button class="btn btn-primary">Enter</button></a>
+                        <a href="/work/{{ team.pk }}/"><button class="btn btn-primary" style="min-width: 60px;">Enter</button></a>
+                        <a href="/teamExit/{{ team.pk }}/"><button class="btn btn-danger" style="min-width: 60px;">Exit</button></a>
                     </td>
                 </tr>
                 {% endfor %}

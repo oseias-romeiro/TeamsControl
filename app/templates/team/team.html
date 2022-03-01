@@ -39,13 +39,23 @@
                 {% if team.private %} selected {% endif %}
                 >
                 <label class="form-check-label" for="private">private</label>
-                <small>if private your Team dont appear to people and that dont recieve invites to join it. So thats <a href="http://localhost/joinTeam/{{ user.pk }}/">link</a> is for other perssons join in your Team</small>
+                <small>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</small>
+                <small><a href="http://localhost/joinTeam/{{ user.pk }}/">http://localhost/joinTeam/{{ user.pk }}/</a> share this link to other users join in your Team</small>
             </div>
-            <button type="submit" class="btn btn-success">Edit</button>
+            <button type="submit" class="btn btn-success btn-login">Edit</button>
         </form>
         <br>
-        <a href="/deleteTeam/{{ user.pk }}/"><button class="btn btn-danger">Delete</button></a>
+        <a href="/deleteTeam/{{ user.pk }}/"><button class="btn btn-danger btn-login" style="margin-top: 0;">Delete</button></a>
     </div>
 </div>
+
+<style>
+    @media only screen and (max-width: 600px) {
+        .btn-login {
+            max-width: 300px;
+            margin-top: 40px;
+        }
+    }
+</style>
 
 {% endblock %}

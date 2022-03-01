@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
     <div class="main">
         {% if messages %}
             {% for m in messages %}
-                <div class="alert alert-primary {{ m.tags }}" role="alert">m</div>
+                <div class="alert alert-primary {{ m.tags }}" role="alert">{{ m }}</div>
             {% endfor %}
         {% endif %}
         <div class="container">
