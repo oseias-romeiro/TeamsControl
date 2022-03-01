@@ -13,19 +13,24 @@
                 <label for="name">Team name</label>
                 <input type="text" class="form-control" name="name" value="{{ team.name }}">
             </div>
-            <label for="participants">Participants</label>
-            <select class="form-select" name="participants" id="id_participants" multiple>
+            <label for="liParticipantes">Participants</label>
+            <select class="form-select" id="liParticipantes" multiple disabled>
                 {% for p in team.participants.all %}
-                    <option value="{{ p.pk }}" selected>{{ p.email }}</option>
-                {% endfor %}
-                {% for i in team.invites.all %}
-                    <option value="{{ i.pk }}">{{ i.email }}</option>
+                    <option value="{{ p.pk }}">{{ p.email }}</option>
                 {% endfor %}
             </select>
-            <ul>
-                <li><small>Based on invites</small></li>
-                <li><small>Let selected only if you want keep in your team!</small></li>
-            </ul>
+            <label for="participants">Invites</label>
+            <select class="form-select" name="participants" id="id_participants" multiple>
+                {% for p in team.participants.all %}
+                    <option value="{{ p.pk }}" selected hidden>{{ p.email }}</option>
+                {% endfor %}
+                {% for i in team.invites.all %}
+                    {% if i not in team.participants.all %}
+                        <option value="{{ i.pk }}">{{ i.email }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <small>Select invites that you allowed joined your team!</small>
             <div class="form-group">
                 <label for="focus">Focus</label>
                 <input type="text" class="form-control" name="focus" value="{{ team.focus }}">
@@ -42,10 +47,14 @@
                 <small>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</small>
                 <small><a href="http://localhost/joinTeam/{{ user.pk }}/">http://localhost/joinTeam/{{ user.pk }}/</a> share this link to other users join in your Team</small>
             </div>
-            <button type="submit" class="btn btn-success btn-login">Edit</button>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-success btn-login">Edit</button>
+            </div>
         </form>
         <br>
-        <a href="/deleteTeam/{{ user.pk }}/"><button class="btn btn-danger btn-login" style="margin-top: 0;">Delete</button></a>
+        <div style="text-align: center;">
+            <a href="/deleteTeam/{{ user.pk }}/"><button class="btn btn-danger btn-login" style="margin-top: 0;">Delete</button></a>
+        </div>
     </div>
 </div>
 

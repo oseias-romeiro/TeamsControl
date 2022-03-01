@@ -50,7 +50,7 @@ class TeamCreate(LoginRequiredMixin, CreateView):
 
 class TeamView(LoginRequiredMixin, UpdateView):
     template_name = 'team/team.html'
-    fields = ['owner', 'participants', 'name', 'focus', 'description', 'private']
+    fields = ['owner', 'participants', 'invites', 'name', 'focus', 'description', 'private']
     model = Team
 
     def get_success_url(self):
