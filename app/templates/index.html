@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>Public Teams</h1>
+    <br>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col">
+            <img src="{% static 'img/capa.png' %}" class="img-fluid" alt="work team">
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <hr>
+
+    <h2>Public Teams</h2>
 
     {% if not user.is_anonymous and not user.team.owner %}
         <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
@@ -38,4 +49,5 @@
             </tbody>
         </table>
     </div>
+
 {% endblock %}

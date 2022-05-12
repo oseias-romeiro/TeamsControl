@@ -5,6 +5,28 @@
     margin-top: 40px;
 }
 
+/* nav bar */
+.navbar-brand {
+    margin: 10px;
+}
+.navbar {
+    background-color: #422F91;
+}
+
+footer {
+    background-color: #422F91;
+}
+
+/* botoes */
+.btn-success {
+    background-color: #369138;
+}
+.btn-primary {
+    background-color: #5281DE;
+}
+.btn-danger {
+    background-color: #E05F50;
+}
 
 /* login */
 .card-login {
