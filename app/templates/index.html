@@ -2,52 +2,65 @@
 {% load static %}
 
 {% block content %}
-    <br>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col">
-            <img src="{% static 'img/capa.png' %}" class="img-fluid" alt="work team">
+
+    <div style="background-color: rgba(0, 0, 0, 0.479);" class="text-light">
+        <div style="padding: 20% 0 20% 0; text-align: center;">
+            <h2 class="text-light">Teams Control</h2>
+            <img style="padding-top: 100px;" class="img-fluid" src="{% static 'img/swipe.png' %}" width="200px">
         </div>
-        <div class="col-2"></div>
-    </div>
-    <hr>
+        
+        <div class="container">
+            <h2>Public Teams</h2>
+            {% if not user.is_anonymous and not user.team.owner %}
+                <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
+            {% endif %}
 
-    <h2>Public Teams</h2>
+            <div class="table-responsive" style="padding: 10px;">
+                <table class="table">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th scope="col">Team</th>
+                            <th scope="col">Focus</th>
+                            <th scope="col">Nº</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in object_list %}
+                        <tr>
+                            <th scope="row">{{ team.name }}</th>
+                            <td>{{ team.focus }}</td>
+                            <td>{{ team.participants.count }}</td>
+                            <td>{{ team.description }}</td>
+                            <td>
+                                {% if user.is_anonymous %}
+                                    <button class="btn btn-success" disabled>Join</button>
+                                {% else %}
+                                    <a href="/joinTeam/{{ team.pk }}/"><button class="btn btn-success">Join</button></a>
+                                {% endif %}
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        
 
-    {% if not user.is_anonymous and not user.team.owner %}
-        <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
-    {% endif %}
+    <!-- background -->
+    <style>
+        body{
+            background-image: url("static/img/capa.jpg");
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead class="bg-dark text-light">
-                <tr>
-                    <th scope="col">Team</th>
-                    <th scope="col">Focus</th>
-                    <th scope="col">Nº</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Accion</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for team in object_list %}
-                <tr>
-                    <th scope="row">{{ team.name }}</th>
-                    <td>{{ team.focus }}</td>
-                    <td>{{ team.participants.count }}</td>
-                    <td>{{ team.description }}</td>
-                    <td>
-                        {% if user.is_anonymous %}
-                            <button class="btn btn-success" disabled>Join</button>
-                        {% else %}
-                            <a href="/joinTeam/{{ team.pk }}/"><button class="btn btn-success">Join</button></a>
-                        {% endif %}
-                        
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
 {% endblock %}
