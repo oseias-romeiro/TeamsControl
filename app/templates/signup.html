@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-<div class="d-flex justify-content-center">
-    <div class="card">
-        <div class="card-body">
-        <h1 style="text-align: center;">SignUp</h1>
+<div class="row d-flex align-items-center">
+    <div class="col-sm-12 col-md-6">
+        <img class="img-fluid" src="{% static 'img/work.png' %}" width="70%">
+    </div>
+    <div class="col-sm-12 col-md-6">
+    <div class="card-body" style="max-width: 70%;">
+        <h1 class="text-center">SignUp</h1>
         <form method="post">{% csrf_token %}
             <div class="form-group">
                 <label for="nome_completo">Full name</label>
@@ -27,11 +31,9 @@
                 <label for="password2">Confirm password</label>
                 <input type="password" class="form-control" name="password2">
             </div>
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-success btn-login">SignUp</button>
-            </div>
+            <button type="submit" class="text-center btn btn-success" style="width: 100%; margin: 20px 10px 0 0;">SignUp</button>
         </form>
-        </div>
+    </div>
     </div>
 </div>
 

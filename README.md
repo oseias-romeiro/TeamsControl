@@ -18,14 +18,14 @@ With this application you can create a team and work together sharing gools. You
 
 ## Install dependences
 
-```
-py install requirements.txt
+```shell
+pip install -r requirements.txt
 ```
 
 ## Execute
 
-```
-py runserver
+```shell
+python3 manange.py runserver
 ```
 
-ps.: accounts exemple are avaliable for login in accounts.txt file
+ps.: accounts exemple are avaliable for login in [accounts.csv](./accounts.csv) file
