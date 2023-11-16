@@ -2,8 +2,10 @@
 
 With this application you can create a team and work together sharing gools. Your team can be public too and any other user in plataform with account can join it and help you.
 
+Try: [teamcontrol](https://djangocrud.oseiasromeiro.repl.co/)
+
 <p align="center">
-    <a href="https://teamcontrol.herokuapp.com/" target="blank"><img src="app/static/img/capa.jpg" width="500" alt="Teams Control Logo" /></a>
+    <img src="app/static/img/capa.jpg" width="500" alt="Teams Control Logo" />
 </p>
 
 ## Requirements
