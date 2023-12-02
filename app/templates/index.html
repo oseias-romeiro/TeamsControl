@@ -37,7 +37,7 @@
                                 {% if user.is_anonymous %}
                                     <button class="btn btn-success" disabled>Join</button>
                                 {% else %}
-                                    <a href="/joinTeam/{{ team.pk }}/"><button class="btn btn-success">Join</button></a>
+                                    <a href="{% url 'joinTeam' team.pk %}"><button class="btn btn-success">Join</button></a>
                                 {% endif %}
                                 
                             </td>
@@ -53,7 +53,7 @@
     <!-- background -->
     <style>
         body{
-            background-image: url("static/img/capa.jpg");
+            background-image: url("{% static 'img/capa.jpg' %}");
 
             /* Create the parallax scrolling effect */
             background-attachment: fixed;

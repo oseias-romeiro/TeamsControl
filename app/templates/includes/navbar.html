@@ -8,11 +8,11 @@
         <a class="navbar-brand" href="#">Teams Control</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             {% if user.is_anonymous %}
             <li class="nav-item">
-                <a class="nav-link" href="/contas/login">Login</a>
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
@@ -22,16 +22,16 @@
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/profile/{{ user.pk }}">Profile</a>
+                <a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
             </li>
             {% if user.team %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/team/{{ user.pk }}/">My Team</a>
+                    <a class="nav-link" href="{% url 'team' user.pk %}">My Team</a>
                 </li>
             {% endif %}
             {% if user.participa %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/teams/{{ user.pk }}/">Teams</a>
+                    <a class="nav-link" href="{% url 'teams' user.pk %}">Teams</a>
                 </li>
             {% endif %}
             {% endif %}

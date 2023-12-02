@@ -1,1 +1,0 @@
-web: gunicorn DjangoCRUD.wsgi --log-file -

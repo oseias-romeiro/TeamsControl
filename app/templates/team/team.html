@@ -47,7 +47,7 @@
                     <label class="form-check-label" for="private">private</label>
                     <small><ul>
                         <li>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</li>
-                        <li>share this link to other users join in your Team<button class="btn btn-link" onclick="copy('http://localhost/joinTeam/{{ user.pk }}/')">http://localhost/joinTeam/{{ user.pk }}/</button></li>
+                        <li>share this link to other users join in your Team<button class="btn btn-link">{% url 'joinTeam' user.pk %}</button></li>
                     </ul></small>
                 </div>
                 <br>
@@ -56,7 +56,7 @@
                         <button type="submit" class="text-center btn btn-success" style="width: 100%;">Edit</button>
                     </div>
                     <div class="col">
-                        <a href="/deleteTeam/{{ user.pk }}/" class="text-center btn btn-danger" style="width: 100%; margin-top: 0;">Delete</a>
+                        <a href="{% url 'deleteTeam' user.pk %}" class="text-center btn btn-danger" style="width: 100%; margin-top: 0;">Delete</a>
                     </div>
                 </div>
             </form>
