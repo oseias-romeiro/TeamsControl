@@ -1,0 +1,18 @@
+[
+    {
+        "model": "app.team_invites",
+        "pk": 1,
+        "fields": {
+            "team_id": 2,
+            "customuser_id": 1
+        }
+    },
+    {
+        "model": "app.team_invites",
+        "pk": 2,
+        "fields": {
+            "team_id": 1,
+            "customuser_id": 2
+        }
+    }
+]

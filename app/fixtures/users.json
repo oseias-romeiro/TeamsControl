@@ -1,0 +1,78 @@
+[
+    {
+        "model": "app.customuser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XoiHTRkncWoBT81h4ppTyC$9kEbAsz1en644yjqb6VQ4GlnImPOvAKX67/60JH7pt4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "user1",
+            "first_name": "John",
+            "last_name": "Doe",
+            "is_active": true,
+            "date_joined": "2023-01-01T12:00:00Z",
+            "email": "user1@example.com",
+            "nome_completo": "John Doe",
+            "interesse": "Interesse1",
+            "linkedin": "https://www.linkedin.com/in/user1/",
+            "is_staff": false
+        }
+    },
+    {
+        "model": "app.customuser",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XoiHTRkncWoBT81h4ppTyC$9kEbAsz1en644yjqb6VQ4GlnImPOvAKX67/60JH7pt4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "user2",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "is_active": true,
+            "date_joined": "2023-01-02T12:00:00Z",
+            "email": "user2@example.com",
+            "nome_completo": "Jane Doe",
+            "interesse": "Interesse2",
+            "linkedin": "https://www.linkedin.com/in/user2/",
+            "is_staff": false
+        }
+    },
+    {
+        "model": "app.customuser",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XoiHTRkncWoBT81h4ppTyC$9kEbAsz1en644yjqb6VQ4GlnImPOvAKX67/60JH7pt4=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "Admin",
+            "last_name": "User",
+            "is_active": true,
+            "date_joined": "2023-01-03T12:00:00Z",
+            "email": "admin@example.com",
+            "nome_completo": "Admin User",
+            "interesse": "Admin Interesse",
+            "linkedin": "https://www.linkedin.com/in/admin/",
+            "is_staff": true
+        }
+    },
+    {
+        "model": "app.customuser",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XoiHTRkncWoBT81h4ppTyC$9kEbAsz1en644yjqb6VQ4GlnImPOvAKX67/60JH7pt4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "user3",
+            "first_name": "Alice",
+            "last_name": "Smith",
+            "is_active": true,
+            "date_joined": "2023-01-04T12:00:00Z",
+            "email": "user3@example.com",
+            "nome_completo": "Alice Smith",
+            "interesse": "Interesse3",
+            "linkedin": "https://www.linkedin.com/in/user3/",
+            "is_staff": false
+        }
+    }
+]

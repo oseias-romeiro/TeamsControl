@@ -1,0 +1,24 @@
+[
+    {
+        "model": "app.team",
+        "pk": 1,
+        "fields": {
+            "name": "Team1",
+            "focus": "development",
+            "description": "software development team",
+            "private": false,
+            "owner_id": 1
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 2,
+        "fields": {
+            "name": "Team2",
+            "focus": "Tests",
+            "description": "software testing team",
+            "private": true,
+            "owner_id": 2
+        }
+    }
+]

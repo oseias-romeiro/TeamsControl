@@ -1,0 +1,29 @@
+[
+    {
+        "model": "app.goal",
+        "pk": 1,
+        "fields": {
+            "title": "Goal1",
+            "goal": "Description of goal 1",
+            "team": 1
+        }
+    },
+    {
+        "model": "app.goal",
+        "pk": 2,
+        "fields": {
+            "title": "Goal2",
+            "goal": "Description of goal 2",
+            "team": 1
+        }
+    },
+    {
+        "model": "app.goal",
+        "pk": 3,
+        "fields": {
+            "title": "Goal3",
+            "goal": "Description of goal 3",
+            "team": 2
+        }
+    }
+]

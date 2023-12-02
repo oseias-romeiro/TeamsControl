@@ -1,0 +1,26 @@
+[
+    {
+        "model": "app.team_participants",
+        "pk": 1,
+        "fields": {
+            "team_id": 1,
+            "customuser_id": 1
+        }
+    },
+    {
+        "model": "app.team_participants",
+        "pk": 2,
+        "fields": {
+            "team_id": 2,
+            "customuser_id": 2
+        }
+    },
+    {
+        "model": "app.team_participants",
+        "pk": 3,
+        "fields": {
+            "team_id": 2,
+            "customuser_id": 3
+        }
+    }
+]

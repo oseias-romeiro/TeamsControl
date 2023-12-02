@@ -8,26 +8,43 @@ Try: [teamcontrol](https://djangocrud.oseiasromeiro.repl.co/)
     <img src="app/static/img/capa.jpg" width="500" alt="Teams Control Logo" />
 </p>
 
-## Requirements
-
-* **asgiref 3.5.0**
-* **dj-static 0.0.6**
-* **Django 4.0.2**
-* **gunicorn 20.1.0**
-* **sqlparse 0.4.2**
-* **static3 0.7.0**
-* **tzdata 2021.5**
 
 ## Install dependences
+Choose environment requirements file to install
 
 ```shell
-pip install -r requirements.txt
+pip install -r requirements-{environemt}.txt
 ```
+
+## Environment
+Configure environment file `.env` based in `.env.example`
+
+
+## Fixtures
+Loading data to database
+
+```sh
+python3 manage.py loaddata users
+python3 manage.py loaddata team
+python3 manage.py loaddata team_invites
+python3 manage.py loaddata team_participants
+python3 manage.py loaddata goal
+python3 manage.py loaddata goals
+```
+
+> all user passwords are `Team#Control`
 
 ## Execute
 
-```shell
-python3 manange.py runserver
+- Development
+```sh
+flask run
+```
+> access [localhost:8000](http://localhost:8000)
+
+- Production
+```sh
+gunicorn DjangoCRUD.wsgi --bind 0.0.0.0 --log-file logs/gunicorn.log
 ```
 
-ps.: accounts exemple are avaliable for login in [accounts.csv](./accounts.csv) file
+> access [localhost:8000](http://localhost:8000)
