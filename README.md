@@ -19,9 +19,16 @@ pip install -r requirements-{environemt}.txt
 ## Environment
 Configure environment file `.env` based in `.env.example`
 
+## Database
+Set default database in DjangoCRUD/settings.py and migrate:
 
-## Fixtures
-Loading data to database
+```sh
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+### Fixtures
+Feeding database
 
 ```sh
 python3 manage.py loaddata users
@@ -32,7 +39,7 @@ python3 manage.py loaddata goal
 python3 manage.py loaddata goals
 ```
 
-> all user passwords are `Team#Control`
+> all user passwords are `Teams#Control`
 
 ## Execute
 
