@@ -10,16 +10,18 @@
             <hr>
             <form action="" method="post">{% csrf_token %}
                 <input type="text" name="owner" value="{{ user.pk }}" hidden>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="name">Team name</label>
                     <input type="text" class="form-control" name="name" value="{{ team.name }}">
                 </div>
+                <br>
                 <label for="liParticipantes">Participants</label>
                 <select class="form-select" id="liParticipantes" multiple disabled>
                     {% for p in team.participants.all %}
                         <option value="{{ p.pk }}">{{ p.email }}</option>
                     {% endfor %}
                 </select>
+                <br>
                 <label for="participants">Invites</label>
                 <select class="form-select" name="participants" id="id_participants" multiple>
                     {% for p in team.participants.all %}
@@ -32,11 +34,11 @@
                     {% endfor %}
                 </select>
                 <small>Select invites that you allowed joined your team!</small>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="focus">Focus</label>
                     <input type="text" class="form-control" name="focus" value="{{ team.focus }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="description">Description</label>
                     <textarea class="form-control" name="description">{{ team.description }}</textarea>
                 </div>
@@ -45,13 +47,11 @@
                     {% if team.private %} selected {% endif %}
                     >
                     <label class="form-check-label" for="private">private</label>
-                    <small><ul>
-                        <li>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</li>
-                        <li>share this link to other users join in your Team<button class="btn btn-link">{% url 'joinTeam' user.pk %}</button></li>
-                    </ul></small>
+                    <small>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</small>
                 </div>
                 <br>
-                <div class="row">
+                <small>share this link to other users join in your Team<button id="btn-team-link" class="btn btn-link btn-sm">{% url 'joinTeam' user.pk %}</button></small>
+                <div class="row mt-4">
                     <div class="col">
                         <button type="submit" class="text-center btn btn-success" style="width: 100%;">Edit</button>
                     </div>
@@ -65,12 +65,5 @@
     </div>
 </div>
 <br>
-
-<script>
-    let copy = (link)=>{
-        navigator.clipboard.writeText(link);
-        alert("link copyed!");
-    }
-</script>
 
 {% endblock %}

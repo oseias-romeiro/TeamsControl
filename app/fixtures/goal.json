@@ -4,8 +4,10 @@
         "pk": 1,
         "fields": {
             "title": "Goal1",
-            "goal": "Description of goal 1",
-            "team": 1
+            "description": "Description of goal 1",
+            "team": 1,
+            "deadline": "2024-12-31", 
+            "done": false
         }
     },
     {
@@ -13,8 +15,10 @@
         "pk": 2,
         "fields": {
             "title": "Goal2",
-            "goal": "Description of goal 2",
-            "team": 1
+            "description": "Description of goal 2",
+            "team": 1,
+            "deadline": "2024-12-31", 
+            "done": false
         }
     },
     {
@@ -22,8 +26,10 @@
         "pk": 3,
         "fields": {
             "title": "Goal3",
-            "goal": "Description of goal 3",
-            "team": 2
+            "description": "Description of goal 3",
+            "team": 2,
+            "deadline": "2024-12-31", 
+            "done": false
         }
     }
 ]

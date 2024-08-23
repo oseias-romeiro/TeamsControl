@@ -64,7 +64,9 @@ class Membership(models.Model):
 class Goal(models.Model):
     team = models.IntegerField('team', null=False, default="1")
     title = models.CharField('Title', max_length=20, null=False)
-    goal = models.CharField('Description', max_length=200, null=False)
+    description = models.CharField('Description', max_length=200, null=False)
+    deadline = models.DateField('Deadline', null=True)
+    done = models.BooleanField('Done', default=False)
 
     def __str__(self) -> str:
         return self.pk

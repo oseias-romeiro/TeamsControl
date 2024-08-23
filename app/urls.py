@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam, JoinTeam, Teams, ExitTeam, Work, DeleteGoals;
+from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam, JoinTeam, Teams, ExitTeam, Work, DoneGoal, AboutView, ListDoneGoals
 
 urlpatterns = [
-    path('', IndexView.as_view(), name = 'index'),
+    path('', IndexView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about'),
     # user
     path('signup/', CreateUserView.as_view(), name='signup'),
     path('teamCreate/', TeamCreate.as_view(), name='teamCreate'),
@@ -16,7 +17,8 @@ urlpatterns = [
     path('teamExit/<int:pk>/', ExitTeam.as_view(), name='teamExit'),
     # work ambient
     path('work/<int:pk>/', Work.as_view(), name='work'),
-    path('work/delete/<int:pk>/<slug:team>/', DeleteGoals.as_view(), name='deleteGoals'),
+    path('work/done/<int:pk>/<slug:team>/', DoneGoal.as_view(), name='doneGoal'),
+    path('work/<int:pk>/history', ListDoneGoals.as_view(), name='listDoneGoals'),
 ]
 
 # error routes handler

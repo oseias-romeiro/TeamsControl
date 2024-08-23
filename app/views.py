@@ -1,6 +1,6 @@
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from django.contrib import messages
 
@@ -22,6 +22,9 @@ class IndexView(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+    
 class CreateUserView(CreateView):
     template_name = 'signup.html'
     form_class = CustomUserCreate
@@ -102,19 +105,19 @@ class Work(LoginRequiredMixin, ListView):
     def post(self, request, *args, **kwargs):
         team = self.request.POST.get('team')
         title = self.request.POST.get('title')
-        text = self.request.POST.get('goal')
+        description = self.request.POST.get('description')
 
         goal = Goal()
         goal.team = team
         goal.title = title
-        goal.goal = text
+        goal.description = description
         goal.save()
 
         return redirect("/work/"+str(kwargs['pk']))
     
     def get_queryset(self, **kwargs):
         team = self.kwargs['pk']
-        return super().get_queryset().filter(team=team)
+        return super().get_queryset().filter(team=team, done=False)
 
     def get_context_data(self, **kwargs):
         team = self.kwargs['pk']
@@ -122,9 +125,30 @@ class Work(LoginRequiredMixin, ListView):
         context['team'] = Team.objects.filter(pk=team)[0]
         return context
 
-class DeleteGoals(LoginRequiredMixin, DeleteView):
+class DoneGoal(LoginRequiredMixin, UpdateView):
     model = Goal
-    template_name = 'work/goal_delete.html'
+    template_name = 'work/done_goal.html'
+    fields = ['done']
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Goal completed!')
+        return reverse('work', kwargs={'pk': self.object.team})
+
+class ListDoneGoals(LoginRequiredMixin, ListView):
+    template_name = 'work/history.html'
+    model = Goal
+
+    def get_queryset(self):
+        team = self.kwargs['pk']
+        return super().get_queryset().filter(team=team, done=True)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
+class DeleteGoal(LoginRequiredMixin, DeleteView):
+    model = Goal
+    template_name = 'work/delete_goal.html'
 
     def post(self, request, *args, **kwargs):
         Goal.objects.filter(pk=kwargs['pk']).delete()

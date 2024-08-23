@@ -1,6 +1,5 @@
 # Teams Control: web application for manage work teams
-
-With this application you can create a team and work together sharing gools. Your team can be public too and any other user in plataform with account can join it and help you.
+Teams Control is a versatile platform designed to streamline team management and project coordination. With Teams Control, you can effortlessly create, delete, and manage teams tailored to your needs. Teams can be set as public, allowing anyone to send invitations to join, or secret, accessible only via a direct link. The platform offers robust tools for defining tasks, assigning them to team members, and managing project progress, making it an essential tool for efficient collaboration and productivity.
 
 Try: [teamcontrol](https://djangocrud.oseiasromeiro.repl.co/)
 
@@ -45,7 +44,7 @@ python3 manage.py loaddata goals
 
 - Development
 ```sh
-flask run
+python3 manage.py runserver
 ```
 > access [localhost:8000](http://localhost:8000)
 

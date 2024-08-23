@@ -3,18 +3,19 @@
 
 {% block content %}
 
-    <div style="background-color: rgba(0, 0, 0, 0.479);" class="text-light">
-        <div style="padding: 20% 0 10% 0; text-align: center;">
-            <h1 class="text-light text-xl fw-bold">Teams Control</h1>
-            <img style="padding-top: 100px; max-width: 100px;" class="img-fluid" src="{% static 'img/swipe_light.png' %}">
+    <div style="background-color: rgba(0, 0, 0, 0.500);" class="text-light">
+        <div style="height: calc(100vh - 60px);">
+            <div class="d-flex flex-column justify-content-center h-75 p-4">
+                <h1 class="display-3">Teams Control</h1>
+            </div>
         </div>
-        
+    
         <div class="container">
             <h2>Public Teams</h2>
             {% if not user.is_anonymous and not user.team.owner %}
                 <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
             {% endif %}
-
+    
             <div class="table-responsive" style="padding: 10px;">
                 <table class="table">
                     <thead class="bg-dark text-light">
@@ -47,7 +48,8 @@
                 </table>
             </div>
         </div>
-        </div>
+    </div>
+    
         
 
     <!-- background -->

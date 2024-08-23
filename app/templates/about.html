@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div style="background-color: rgba(0, 0, 0, 0.500);">
+        <div style="height: calc(100vh - 60px); padding-top: 50px;">
+            <div class="w-75 text-center rounded p-3" style="margin: 0 auto; background-color: rgba(255, 255, 255, 0.775);">
+                <h1>Teams Control</h1>
+                <h5>Teams Control is a versatile platform designed to streamline team management and project coordination. With Teams Control, you can effortlessly create, delete, and manage teams tailored to your needs. Teams can be set as public, allowing anyone to send invitations to join, or secret, accessible only via a direct link. The platform offers robust tools for defining tasks, assigning them to team members, and managing project progress, making it an essential tool for efficient collaboration and productivity.</h5>
+                <h5>Developed by <a href="https://oseias-romeiro.github.io/">Oseias Romeiro</a></h5>
+            </div>
+        </div>
+    </div>
+    
+    <!-- background -->
+    <style>
+        body{
+            background-image: url("{% static 'img/capa.jpg' %}");
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-"""DjangoCRUD URL Configuration
+"""TeamsControl URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -20,6 +20,6 @@ URL_PREFIX = ''
 
 urlpatterns = [
     path(URL_PREFIX+'admin/', admin.site.urls, name='login'),
-    path(URL_PREFIX+'contas/', include('django.contrib.auth.urls')),
+    path(URL_PREFIX+'accounts/', include('django.contrib.auth.urls')),
     path(URL_PREFIX+'', include('app.urls')),
 ]
