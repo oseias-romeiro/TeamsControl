@@ -3,9 +3,9 @@
         "model": "app.team",
         "pk": 1,
         "fields": {
-            "name": "Team1",
-            "focus": "development",
-            "description": "software development team",
+            "name": "Alpha Developers",
+            "focus": "Software Development",
+            "description": "Team focused on backend and frontend software development, building scalable and reliable applications.",
             "private": false,
             "owner_id": 1
         }
@@ -14,11 +14,33 @@
         "model": "app.team",
         "pk": 2,
         "fields": {
-            "name": "Team2",
-            "focus": "Tests",
-            "description": "software testing team",
+            "name": "Quality Assurance Squad",
+            "focus": "Quality Assurance",
+            "description": "Team responsible for rigorous testing and quality assurance processes to ensure software reliability.",
             "private": true,
             "owner_id": 2
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 3,
+        "fields": {
+            "name": "Market Expansion",
+            "focus": "Business Development",
+            "description": "Team dedicated to expanding the company's market presence and exploring new opportunities.",
+            "private": false,
+            "owner_id": 3
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 4,
+        "fields": {
+            "name": "Product Innovation",
+            "focus": "Research and Development",
+            "description": "Team focused on developing innovative products and exploring cutting-edge technologies.",
+            "private": true,
+            "owner_id": 4
         }
     }
 ]

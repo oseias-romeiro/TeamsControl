@@ -15,8 +15,12 @@
                         <input type="text" class="form-control" name="title">
                     </div>
                     <div class="form-group">
-                        <label for="goal">Description</label>
-                        <textarea class="form-control" name="goal" rows="3"></textarea>
+                        <label for="deadline">Deadline</label>
+                        <input type="date" class="form-control" name="deadline">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" rows="3" name="description"></textarea>
                     </div>
                     <br>
                     <button type="submit" class="btn btn-dark" style="width: 100%;">Add</button>
@@ -39,12 +43,13 @@
                                 <div class="row">
                                     <div class="col-9">{{ g.title }}</div>
                                     <div class="col-3">
-                                        <a href="{% url 'doneGoal' g.pk team.pk %}"><button class="btn btn-outline-dark btn-sm">&#10003;</button></a>
+                                        <a class="btn btn-outline-dark btn-sm" href="{% url 'doneGoal' g.pk team.pk %}">&#10003;</a>
                                     </div>
                                 </div>
                             </h5>
+                            <small style="font-size: 0.7em;">{{ g.deadline }}</small>
                             <hr>
-                            <div>{{ g.goal }}</div>
+                            <div>{{ g.description }}</div>
                         </div>
                     </div>
                 </div>
@@ -54,4 +59,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    const doneGoal = (goalId, teamId)=>{
+        fetch(`/work/done/${goalId}/${teamId}/`)
+        .then(response => location.reload())
+    }
+</script>
 {% endblock %}

@@ -11,7 +11,7 @@
         "model": "app.goals",
         "pk": 2,
         "fields": {
-            "team_id": 1,
+            "team_id": 2,
             "goals_id": 2
         }
     },
@@ -19,8 +19,16 @@
         "model": "app.goals",
         "pk": 3,
         "fields": {
-            "team_id": 2,
+            "team_id": 3,
             "goals_id": 3
+        }
+    },
+    {
+        "model": "app.goals",
+        "pk": 4,
+        "fields": {
+            "team_id": 4,
+            "goals_id": 4
         }
     }
 ]

@@ -11,7 +11,7 @@
         "model": "app.team_participants",
         "pk": 2,
         "fields": {
-            "team_id": 2,
+            "team_id": 1,
             "customuser_id": 2
         }
     },
@@ -20,7 +20,31 @@
         "pk": 3,
         "fields": {
             "team_id": 2,
+            "customuser_id": 2
+        }
+    },
+    {
+        "model": "app.team_participants",
+        "pk": 4,
+        "fields": {
+            "team_id": 3,
             "customuser_id": 3
+        }
+    },
+    {
+        "model": "app.team_participants",
+        "pk": 5,
+        "fields": {
+            "team_id": 3,
+            "customuser_id": 4
+        }
+    },
+    {
+        "model": "app.team_participants",
+        "pk": 6,
+        "fields": {
+            "team_id": 4,
+            "customuser_id": 4
         }
     }
 ]

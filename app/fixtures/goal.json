@@ -3,33 +3,48 @@
         "model": "app.goal",
         "pk": 1,
         "fields": {
-            "title": "Goal1",
-            "description": "Description of goal 1",
+            "title": "Develop New API Features",
+            "description": "Implement and deploy new features for the public API to enhance user experience and increase integration capabilities.",
             "team": 1,
-            "deadline": "2024-12-31", 
-            "done": false
+            "deadline": "2024-12-15", 
+            "done": false,
+            "date_update": "2024-08-20"
         }
     },
     {
         "model": "app.goal",
         "pk": 2,
         "fields": {
-            "title": "Goal2",
-            "description": "Description of goal 2",
-            "team": 1,
-            "deadline": "2024-12-31", 
-            "done": false
+            "title": "Conduct Comprehensive Regression Testing",
+            "description": "Execute thorough regression testing to ensure all recent changes are stable and no new bugs have been introduced.",
+            "team": 2,
+            "deadline": "2024-11-30", 
+            "done": false,
+            "date_update": "2024-08-15"
         }
     },
     {
         "model": "app.goal",
         "pk": 3,
         "fields": {
-            "title": "Goal3",
-            "description": "Description of goal 3",
-            "team": 2,
-            "deadline": "2024-12-31", 
-            "done": false
+            "title": "Expand Market Presence in Europe",
+            "description": "Increase brand visibility and customer acquisition in key European markets by implementing localized marketing strategies.",
+            "team": 3,
+            "deadline": "2024-12-01", 
+            "done": false,
+            "date_update": "2024-09-10"
+        }
+    },
+    {
+        "model": "app.goal",
+        "pk": 4,
+        "fields": {
+            "title": "Prototype a New AI-Driven Product",
+            "description": "Design and develop a prototype for a new product utilizing AI technologies to innovate and meet emerging market demands.",
+            "team": 4,
+            "deadline": "2025-03-31", 
+            "done": false,
+            "date_update": "2024-10-05"
         }
     }
 ]

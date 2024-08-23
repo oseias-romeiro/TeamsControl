@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.core.exceptions import ValidationError
 
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
@@ -67,6 +65,7 @@ class Goal(models.Model):
     description = models.CharField('Description', max_length=200, null=False)
     deadline = models.DateField('Deadline', null=True)
     done = models.BooleanField('Done', default=False)
+    date_update = models.DateTimeField('Update', null=True, auto_now=True)
 
     def __str__(self) -> str:
         return self.pk

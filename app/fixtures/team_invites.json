@@ -3,8 +3,8 @@
         "model": "app.team_invites",
         "pk": 1,
         "fields": {
-            "team_id": 2,
-            "customuser_id": 1
+            "team_id": 1,
+            "customuser_id": 3
         }
     },
     {
@@ -12,7 +12,23 @@
         "pk": 2,
         "fields": {
             "team_id": 1,
+            "customuser_id": 4
+        }
+    },
+    {
+        "model": "app.team_invites",
+        "pk": 3,
+        "fields": {
+            "team_id": 4,
             "customuser_id": 2
+        }
+    },
+    {
+        "model": "app.team_invites",
+        "pk": 4,
+        "fields": {
+            "team_id": 4,
+            "customuser_id": 3
         }
     }
 ]

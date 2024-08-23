@@ -1,11 +1,9 @@
 # Teams Control: web application for manage work teams
 Teams Control is a versatile platform designed to streamline team management and project coordination. With Teams Control, you can effortlessly create, delete, and manage teams tailored to your needs. Teams can be set as public, allowing anyone to send invitations to join, or secret, accessible only via a direct link. The platform offers robust tools for defining tasks, assigning them to team members, and managing project progress, making it an essential tool for efficient collaboration and productivity.
 
-Try: [teamcontrol](https://djangocrud.oseiasromeiro.repl.co/)
+![Home](./docs/teamscontrol1.gif)
 
-<p align="center">
-    <img src="app/static/img/capa.jpg" width="500" alt="Teams Control Logo" />
-</p>
+![Work](./docs/teamscontrol2.gif)
 
 
 ## Install dependences

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam, JoinTeam, Teams, ExitTeam, Work, DoneGoal, AboutView, ListDoneGoals
+from .views import TemplateView, CreateUserView, EditProfile, TeamCreate, IndexView, TeamView, DeleteTeam, JoinTeam, Teams, ExitTeam, Work, DoneGoal, AboutView, ListDoneGoals, RestoreGoal, DeleteGoal
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -15,10 +15,12 @@ urlpatterns = [
     path('joinTeam/<int:pk>/', JoinTeam.as_view(), name='joinTeam'),
     path('teams/<int:pk>/', Teams.as_view(), name='teams'),
     path('teamExit/<int:pk>/', ExitTeam.as_view(), name='teamExit'),
-    # work ambient
+    # work
     path('work/<int:pk>/', Work.as_view(), name='work'),
     path('work/done/<int:pk>/<slug:team>/', DoneGoal.as_view(), name='doneGoal'),
-    path('work/<int:pk>/history', ListDoneGoals.as_view(), name='listDoneGoals'),
+    path('work/<int:pk>/history/', ListDoneGoals.as_view(), name='listDoneGoals'),
+    path('work/<slug:team>/history/restore/<int:pk>/', RestoreGoal.as_view(), name='restoreGoal'),
+    path('work/<slug:team>/history/delete/<int:pk>/', DeleteGoal.as_view(), name='deleteGoal'),
 ]
 
 # error routes handler

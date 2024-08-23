@@ -25,7 +25,7 @@
     <div class="main">
         {% if messages %}
             {% for m in messages %}
-                <div class="alert alert-primary {{ m.tags }}" role="alert">{{ m }}</div>
+                <div class="alert alert-primary {{ m.tags }}" role="alert" style="position: absolute; z-index: 9999; min-width: calc(100vw - 40px); margin: 20px; cursor: pointer;" onclick="this.style.display='none';">{{ m }}</div>
             {% endfor %}
         {% endif %}
         {% block content %}{% endblock %}
