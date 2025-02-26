@@ -22,13 +22,16 @@
                 <div class="alert alert-primary {{ m.tags }}" role="alert">{{ m }}</div>
             {% endfor %}
         {% endif %}
-        <div class="row d-flex align-items-center">
+        <div class="row d-flex align-items-center w-100">
             <div class="col-sm-12 col-md-6">
                 <img class="img-fluid w-75" src="{% static 'img/work.png' %}">
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="card-body align-self-center" style="max-width: 500px;">
                     <h1 class="text-center">Login</h1>
+                    {% for error in form.errors.values|slice:":1" %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                    {% endfor %}
                     <form method="post">{% csrf_token %}
                         <div class="form-group mt-2 mx-4">
                             <label for="username">E-mail:</label>

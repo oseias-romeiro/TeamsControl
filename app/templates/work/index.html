@@ -1,6 +1,7 @@
 {% extends 'work/base.html' %}
 
 {% block content %}
+
 <div class="row">
     <div class="col-lg-4">
         <div class="card">
@@ -11,7 +12,7 @@
                 <form action="" method="post" autocomplete="off">{% csrf_token %}
                     <input type="number" name="team" value="{{ team.pk }}" hidden>
                     <div class="form-group">
-                        <label for="title">Goal Title</label>
+                        <label for="title">Task</label>
                         <input type="text" class="form-control" name="title">
                     </div>
                     <div class="form-group">
@@ -29,32 +30,29 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body" style="min-height: 300px;">
-                <h1>Goals</h1>
-                <a href="{% url 'listDoneGoals' team.pk %}">History</a>
+        <div class="card-body mt-4">
+            <h1>Tasks</h1>
 
-                <div class="row">
-                {% for g in object_list %}
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <div class="row">
-                                    <div class="col-9">{{ g.title }}</div>
-                                    <div class="col-3">
-                                        <a class="btn btn-outline-dark btn-sm" href="{% url 'doneGoal' g.pk team.pk %}">&#10003;</a>
-                                    </div>
+            <div class="row">
+            {% for g in object_list %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <div class="row">
+                                <div class="col-9">{{ g.title }}</div>
+                                <div class="col-3">
+                                    <a class="btn btn-outline-dark btn-sm" href="{% url 'task_done' team.slug g.pk %}">&#10003;</a>
                                 </div>
-                            </h5>
-                            <small style="font-size: 0.7em;">{{ g.deadline }}</small>
-                            <hr>
-                            <div>{{ g.description }}</div>
-                        </div>
+                            </div>
+                        </h5>
+                        <small style="font-size: 0.7em;">{{ g.deadline }}</small>
+                        <hr>
+                        <div>{{ g.description }}</div>
                     </div>
                 </div>
-                {% endfor %}
-                </div>
+            </div>
+            {% endfor %}
             </div>
         </div>
     </div>

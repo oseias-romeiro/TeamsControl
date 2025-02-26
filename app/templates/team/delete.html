@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center px-4">
+    <form class="text-center bg-light p-4 rounded shadow" method="post" style="max-width: 500px; width: 100%; margin-top: 25vh;">
+        {% csrf_token %}
+        <p style="font-size: 1.2rem;">The Team {{ Team.name }} will be deleted. Are you sure?</p>
+        <div class="row mt-4">
+            <div class="col">
+                <button type="submit" class="btn btn-danger w-100">Delete</button>
+            </div>
+            <div class="col">
+                <button onclick="history.back()" type="button" class="btn btn-dark w-100">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

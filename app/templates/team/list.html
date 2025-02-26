@@ -4,8 +4,20 @@
 
 <br>
 <div class="container">
-    <h1>Teams</h1>
+    <div class="row">
+        <div class="col-10">
+            <h1>Teams</h1>
+        </div>
+        <div class="col-2">
+            {% if not user.team.owner %}
+                <a class="nav-link" href="{% url 'team_create' %}">
+                    <button class="btn btn-success">Create</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
 
+    {% if object_list %}
     <div class="table-responsive">
         <table class="table">
             <thead class="bg-dark text-light">
@@ -25,18 +37,23 @@
                     <td>{{ team.participants.count }}</td>
                     <td>{{ team.description }}</td>
                     <td>
-                        <a href="{% url 'work' team.pk %}" aria-label="enter"><button class="btn btn-primary m-1">
+                        <a href="{% url 'work' team.slug %}"><button title="enter" class="btn btn-primary m-1">
                             <svg xmlns="http://www.w3.org/2000/svg" height="18" width="10.5" viewBox="0 0 320 512"><path fill="#ffffff" d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
                         </button></a>
-                        <a href="{% url 'teamExit' team.pk %}"><button class="btn btn-danger m-1">
+                        {% if team.owner_id != user.id %}
+                        <a href="{% url 'teamExit' team.slug %}"><button title="exit" class="btn btn-danger m-1">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height="18" width="10.5"><path fill="#ffffff" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
                         </button></a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">No teams found</div>
+    {% endif %}
 </div>
 
 {% endblock %}

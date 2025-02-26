@@ -4,6 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "Alpha Developers",
+            "slug": "alpha-developers",
             "focus": "Software Development",
             "description": "Team focused on backend and frontend software development, building scalable and reliable applications.",
             "private": false,
@@ -15,6 +16,7 @@
         "pk": 2,
         "fields": {
             "name": "Quality Assurance Squad",
+            "slug": "quality-assurance-squad",
             "focus": "Quality Assurance",
             "description": "Team responsible for rigorous testing and quality assurance processes to ensure software reliability.",
             "private": true,
@@ -26,6 +28,7 @@
         "pk": 3,
         "fields": {
             "name": "Market Expansion",
+            "slug": "market-expansion",
             "focus": "Business Development",
             "description": "Team dedicated to expanding the company's market presence and exploring new opportunities.",
             "private": false,
@@ -37,6 +40,7 @@
         "pk": 4,
         "fields": {
             "name": "Product Innovation",
+            "slug": "product-innovation",
             "focus": "Research and Development",
             "description": "Team focused on developing innovative products and exploring cutting-edge technologies.",
             "private": true,

@@ -26,7 +26,13 @@
             <a class="navbar-brand" href="#">WorkFlow</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active mx-2">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'work' team.slug %}">Home</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'task_list_done' team.slug %}">History</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'index' %}">Exit</a>
                 </li>
             </ul>
         </div>
@@ -35,7 +41,7 @@
     <div class="main">
         {% if messages %}
             {% for m in messages %}
-                <div class="alert alert-primary {{ m.tags }}" role="alert" style="position: absolute; z-index: 9999; min-width: calc(100vw - 40px); margin: 20px; cursor: pointer;" onclick="this.style.display='none';">{{ m }}</div>
+                <div class="alert alert-{{ m.tags }} text-center" role="alert" style="position: absolute; z-index: 9999; min-width: calc(100vw - 40px); margin: 20px; cursor: pointer;" onclick="this.style.display='none';">{{ m }}</div>
             {% endfor %}
         {% endif %}
         <div class="container">

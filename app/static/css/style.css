@@ -3,8 +3,9 @@ body {
 }
 
 .main {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh + 100px);
 }
+
 .card {
     margin-top: 40px;
 }
@@ -22,8 +23,8 @@ footer {
 }
 
 /* botoes */
-.btn-success {
-    background-color: #369138;
+.btn-success-edited {
+    background-color: #0e460f;
 }
 .btn-primary {
     background-color: #5281DE;
@@ -40,4 +41,10 @@ footer {
 .btn-login {
     width: 500px;
     margin-top: 40px;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }

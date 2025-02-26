@@ -10,36 +10,35 @@
             <li class="mx-md-2 nav-item active">
                 <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
-            {% if user.is_anonymous %}
-            <li class="mx-md-2 nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            <li class="mx-md-2 nav-item">
-                <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
-            </li>
-            {% else %}
-            <li class="mx-md-2 nav-item">
-                <form method="post" action="{% url 'logout' %}">{% csrf_token %}
-                    <button type="submit" class="btn btn-link nav-link">Logout</button>
-                </form>
-            </li>
-            <li class="mx-md-2 nav-item">
-                <a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
-            </li>
-            {% if user.team %}
-                <li class="mx-md-2 nav-item">
-                    <a class="nav-link" href="{% url 'team' user.pk %}">My Team</a>
-                </li>
-            {% endif %}
-            {% if user.participa %}
-                <li class="mx-md-2 nav-item">
-                    <a class="nav-link" href="{% url 'teams' user.pk %}">Teams</a>
-                </li>
-            {% endif %}
-            {% endif %}
             <li class="mx-md-2 nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
+            {% if user.is_anonymous %}
+                <li class="mx-md-2 nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="mx-md-2 nav-item">
+                    <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
+                </li>
+            {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'profile_edit' user.username %}">Edit</a>
+                        {% if user.team %}
+                        <a class="dropdown-item" href="{% url 'team' user.username %}">My Team</a>
+                        {% endif %}
+                        <form class="dropdown-item" method="post" action="{% url 'logout' %}">{% csrf_token %}
+                            <button type="submit" style="all: unset; cursor: pointer;">Logout</button>
+                        </form>
+                    </div>
+                </li>
+                {% if user.participa %}
+                <li class="mx-md-2 nav-item">
+                    <a class="nav-link" href="{% url 'team_list' user.username %}">Teams</a>
+                </li>
+                {% endif %}
+            {% endif %}
         </ul>
     </div>
 </nav>

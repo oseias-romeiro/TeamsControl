@@ -2,11 +2,11 @@
 
 {% block content %}
 
-    <h1>My Team</h1>
-    <div class="card">
+<div class="d-flex justify-content-center w-100">
+    <div class="card m-4 w-100" style="max-width: 600px;">
         <div class="card-body">
+            <h1>My Team</h1>
             <form action="" method="post">{% csrf_token %}
-                <input type="text" name="owner" value="{{ user.pk }}" hidden>
                 <div class="form-group">
                     <label for="name">Team name</label>
                     <input type="text" class="form-control" name="name">
@@ -26,9 +26,12 @@
                 <select name="participants" id="id_participants" hidden>
                     <option value="{{ user.pk }}" selected>{{ user.email }}</option>
                 </select>
-                <button type="submit" class="btn btn-success">Create</button>
+                <div class="d-flex justify-content-center w-100">
+                    <button type="submit" class="btn btn-success w-50 my-4">Create</button>
+                </div>
             </form>
         </div>
     </div>
-    
+</div>
+
 {% endblock %}

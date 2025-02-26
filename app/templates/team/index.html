@@ -15,18 +15,16 @@
                     <input type="text" class="form-control" name="name" value="{{ team.name }}">
                 </div>
                 <br>
-                <label for="liParticipantes">Participants</label>
-                <select class="form-select" id="liParticipantes" multiple disabled>
+                <label for="participantes">Participants</label>
+                <select class="form-select" name="participants" id="participantes" multiple>
                     {% for p in team.participants.all %}
-                        <option value="{{ p.pk }}">{{ p.email }}</option>
+                        <option value="{{ p.pk }}" selected>{{ p.email }} {% if p.pk == user.pk %}(owner) {% endif %}</option>
                     {% endfor %}
                 </select>
+                <small>Select participants that you allowed keep in your team!</small>
                 <br>
-                <label for="participants">Invites</label>
-                <select class="form-select" name="participants" id="id_participants" multiple>
-                    {% for p in team.participants.all %}
-                        <option value="{{ p.pk }}" selected hidden>{{ p.email }}</option>
-                    {% endfor %}
+                <label for="invites">Invites</label>
+                <select class="form-select" name="invites" multiple>
                     {% for i in team.invites.all %}
                         {% if i not in team.participants.all %}
                             <option value="{{ i.pk }}">{{ i.email }}</option>
@@ -44,19 +42,19 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="private" value="1"
-                    {% if team.private %} selected {% endif %}
+                    {% if team.private == 1 %} checked="true" {% endif %}
                     >
                     <label class="form-check-label" for="private">private</label>
                     <small>if private your Team, it does not showd to other users and you don't will recieve invites to join it.</small>
                 </div>
                 <br>
-                <small>share this link to other users join in your Team<button id="btn-team-link" class="btn btn-link btn-sm">{% url 'joinTeam' user.pk %}</button></small>
+                <small>share this link to other users join in your Team<button id="btn-team-link" class="btn btn-link btn-sm">{% url 'team_join' user.pk %}</button></small>
                 <div class="row mt-4">
                     <div class="col">
                         <button type="submit" class="text-center btn btn-success" style="width: 100%;">Edit</button>
                     </div>
                     <div class="col">
-                        <a href="{% url 'deleteTeam' user.pk %}" class="text-center btn btn-danger" style="width: 100%; margin-top: 0;">Delete</a>
+                        <a href="{% url 'team_delete' user.username %}" class="text-center btn btn-danger" style="width: 100%; margin-top: 0;">Delete</a>
                     </div>
                 </div>
             </form>

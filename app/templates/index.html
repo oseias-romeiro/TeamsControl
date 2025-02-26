@@ -12,44 +12,44 @@
     
         <div class="container">
             <h2>Public Teams</h2>
-            {% if not user.is_anonymous and not user.team.owner %}
-                <a href="{% url 'teamCreate' %}"><button class="btn btn-success">Team Create +</button></a>
-            {% endif %}
     
-            <div class="table-responsive" style="padding: 10px;">
-                <table class="table">
-                    <thead class="bg-dark text-light">
-                        <tr>
-                            <th scope="col">Team</th>
-                            <th scope="col">Focus</th>
-                            <th scope="col">Members</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Join</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for team in object_list %}
-                        <tr>
-                            <th scope="row">{{ team.name }}</th>
-                            <td>{{ team.focus }}</td>
-                            <td>{{ team.participants.count }}</td>
-                            <td>{{ team.description }}</td>
-                            <td>
-                                {% if user.is_anonymous %}
-                                    <button class="btn btn-success" disabled>
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><path fill="#ffffff" d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
-                                    </button>
-                                {% else %}
-                                    <a href="{% url 'joinTeam' team.pk %}"><button class="btn btn-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><path fill="#ffffff" d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
-                                    </button></a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="card rounded py-4" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="col">Team</th>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="col">Focus</th>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="col">Members</th>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="col">Description</th>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="col">Join</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for team in object_list %}
+                            <tr>
+                                <th style="background-color: rgba(0, 0, 0, 0);" scope="row">{{ team.name }}</th>
+                                <td style="background-color: rgba(0, 0, 0, 0);">{{ team.focus }}</td>
+                                <td style="background-color: rgba(0, 0, 0, 0);">{{ team.participants.count }}</td>
+                                <td style="background-color: rgba(0, 0, 0, 0);">{{ team.description }}</td>
+                                <td style="background-color: rgba(0, 0, 0, 0);">
+                                    {% if user.is_anonymous %}
+                                        <button class="btn btn-success" disabled>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><path fill="#ffffff" d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                                        </button>
+                                    {% else %}
+                                        <a href="{% url 'team_join' team.slug %}"><button class="btn btn-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><path fill="#ffffff" d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                                        </button></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            <br><br><br>
         </div>
     </div>
     
